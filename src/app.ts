@@ -58,9 +58,7 @@ export async function createApp(): Promise<Express> {
     await setupBotCommands(bot);
     app.use("/webhook", webhookCallback(bot, "express"));
 
-    if (false) {
-      await ensureTelegramWebhook(bot);
-    }
+   // await ensureTelegramWebhook(bot);
     }
   }
 

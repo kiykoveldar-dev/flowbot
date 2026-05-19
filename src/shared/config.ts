@@ -17,7 +17,7 @@ export const config = {
   webappUrl: process.env.WEBAPP_URL ?? process.env.WEBHOOK_URL ?? "",
   localDev: process.env.LOCAL_DEV === "true",
   isVercel: process.env.VERCEL === "1",
-  useTurso: Boolean(process.env.TURSO_DATABASE_URL),
+  useTurso: false,
   tursoUrl: process.env.TURSO_DATABASE_URL ?? "",
   tursoToken: process.env.TURSO_AUTH_TOKEN ?? "",
   cronSecret: process.env.CRON_SECRET ?? "",
