@@ -25,7 +25,14 @@ async function ensureTelegramWebhook(bot: Bot): Promise<void> {
 
 export async function createApp(): Promise<Express> {
   validateConfig();
-  await initDatabase();
+
+  
+  try {
+    await initDatabase();
+    console.log("DB connected");
+  } catch (e) {
+    console.error("DB init failed:", e);
+  }
 
   const app = express();
   app.use(express.json());
