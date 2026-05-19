@@ -122,14 +122,13 @@
   }
 
   function openModal() {
-    els.taskInput.value = "";
-    els.taskModal.showModal();
-    setTimeout(() => els.taskInput.focus(), 100);
-  }
-
+  els.taskInput.value = "";
+  els.taskModal.classList.add("open");
+  setTimeout(() => els.taskInput.focus(), 100);
+}
   function closeModal() {
-    els.taskModal.close();
-  }
+  els.taskModal.classList.remove("open");
+}
 
   async function api(path, options = {}) {
     const headers = {

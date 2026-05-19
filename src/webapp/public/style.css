@@ -235,7 +235,15 @@ body {
   width: 340px;
   background: var(--tg-theme-bg-color);
   color: var(--tg-theme-text-color);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+  box-shadow: 0 8px 32px rgba(0,0,0,.2);
+}
+
+.modal:not(.open) {
+  display: none;
+}
+
+.modal.open {
+  display: flex;
 }
 
 .modal::backdrop {
