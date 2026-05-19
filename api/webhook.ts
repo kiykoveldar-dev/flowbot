@@ -1,30 +1,34 @@
 import { createBot, setupBotCommands } from "../src/bot";
 
-let botPromise: ReturnType<typeof createBot> | null = null;
+let bot: ReturnType<typeof createBot> | null = null;
 
 async function getBot() {
-  if (!botPromise) {
-    const bot = createBot();
+  if (!bot) {
+    bot = createBot();
     await setupBotCommands(bot);
-    botPromise = bot;
   }
 
-  return botPromise;
+  return bot;
 }
 
 export default async function handler(req: any, res: any) {
   if (req.method !== "POST") {
-    return res.status(405).json({ ok: false, error: "Method not allowed" });
+    return res.status(405).end();
   }
 
   try {
-    const bot = await getBot();
+    const telegramBot = await getBot();
 
-    await bot.handleUpdate(req.body);
+    await telegramBot.handleUpdate(req.body);
 
-    return res.status(200).json({ ok: true });
-  } catch (error) {
-    console.error("Webhook error:", error);
-    return res.status(500).json({ ok: false });
+    return res.status(200).json({
+      ok: true,
+    });
+  } catch (e) {
+    console.error(e);
+
+    return res.status(500).json({
+      ok: false,
+    });
   }
 }
