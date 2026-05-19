@@ -104,11 +104,7 @@
   function bindEvents() {
     els.addTaskBtn.addEventListener("click", openModal);
     els.cancelTask.addEventListener("click", closeModal);
-    els.taskForm.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      await onAddTask(e);
-      closeModal();
-    });
+    els.taskForm.addEventListener("submit", onAddTask);
     els.helpBtn.addEventListener("click", () => {
       if (!tg) {
         alert("FlowBot: планируй день, отмечай цели, делись прогрессом.");
@@ -127,22 +123,14 @@
 
   function openModal() {
     els.taskInput.value = "";
-  
-    els.taskModal.classList.add("open");
-  
-    if (typeof els.taskModal.showModal === "function") {
-      els.taskModal.showModal();
-    }
-  
+    els.taskModal.hidden = false;
+    document.body.classList.add("modal-open");
     setTimeout(() => els.taskInput.focus(), 100);
   }
-  
+
   function closeModal() {
-    els.taskModal.classList.remove("open");
-  
-    if (typeof els.taskModal.close === "function") {
-      els.taskModal.close();
-    }
+    els.taskModal.hidden = true;
+    document.body.classList.remove("modal-open");
   }
 
   async function api(path, options = {}) {
