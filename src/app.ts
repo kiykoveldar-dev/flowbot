@@ -56,7 +56,11 @@ export async function createApp(): Promise<Express> {
   if (!config.localDev) {
     const bot = createBot();
     await setupBotCommands(bot);
-    app.use("/webhook", webhookCallback(bot, "express"));
+  
+    app.post("/webhook", express.raw({ type: "application/json" }), webhookCallback(bot, "express"));
+  
+    // await ensureTelegramWebhook(bot);
+  }
 
    // await ensureTelegramWebhook(bot);
     }
