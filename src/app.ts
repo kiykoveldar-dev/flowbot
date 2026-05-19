@@ -21,9 +21,7 @@ async function ensureTelegramWebhook(bot: Bot): Promise<void> {
   });
   webhookRegistered = true;
   console.log(`Webhook set: ${url}`);
-}
-
-export async function createApp(): Promise<Express> {
+}export async function createApp(): Promise<Express> {
   validateConfig();
 
   initDatabase()
@@ -33,13 +31,13 @@ export async function createApp(): Promise<Express> {
     .catch((e) => {
       console.error("DB init failed:", e);
     });
-  
+
   const app = express();
 
   const webappRouter = createWebappRouter();
   app.use(webappRouter);
 
-  app.get("/health", (_req, res) => {Ы
+  app.get("/health", (_req, res) => {
     res.json({
       ok: true,
       service: "flowbot",
@@ -56,14 +54,14 @@ export async function createApp(): Promise<Express> {
   if (!config.localDev) {
     const bot = createBot();
     await setupBotCommands(bot);
-  
-    app.post("/webhook", express.raw({ type: "application/json" }), webhookCallback(bot, "express"));
-  
-    // await ensureTelegramWebhook(bot);
-  }
 
-   // await ensureTelegramWebhook(bot);
-    }
+    app.post(
+      "/webhook",
+      express.raw({ type: "application/json" }),
+      webhookCallback(bot, "express")
+    );
+
+    // await ensureTelegramWebhook(bot);
   }
 
   return app;
