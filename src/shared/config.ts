@@ -33,11 +33,6 @@ export function validateConfig(): void {
   if (!config.botToken && !config.localDev) {
     throw new Error("BOT_TOKEN is required (or set LOCAL_DEV=true)");
   }
-  if (config.isVercel && !config.useTurso && !config.localDev) {
-    throw new Error(
-      "On Vercel set TURSO_DATABASE_URL and TURSO_AUTH_TOKEN (see DEPLOY_VERCEL.md)"
-    );
-  }
 }
 
 export function getWebappUrl(startParam?: string): string {
