@@ -1,0 +1,33 @@
+{
+  "$schema": "https://openapi.vercel.sh/vercel.json",
+  "buildCommand": "npm run build",
+  "installCommand": "npm install",
+  "framework": null,
+  "rewrites": [
+    { "source": "/api/cards/:path*", "destination": "/api" },
+    { "source": "/api/:path*", "destination": "/api" },
+    { "source": "/webhook", "destination": "/api" },
+    { "source": "/health", "destination": "/api" },
+    { "source": "/app", "destination": "/app/index.html" },
+    { "source": "/app/:path*", "destination": "/app/:path*" },
+    { "source": "/", "destination": "/api" }
+  ],
+  "crons": [
+    {
+      "path": "/api/cron/reminders?period=morning",
+      "schedule": "0 5 * * *"
+    },
+    {
+      "path": "/api/cron/reminders?period=evening",
+      "schedule": "0 17 * * *"
+    }
+  ],
+  "functions": {
+    "api/index.ts": {
+      "maxDuration": 30
+    },
+    "api/cron/reminders.ts": {
+      "maxDuration": 60
+    }
+  }
+}

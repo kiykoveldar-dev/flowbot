@@ -1,0 +1,32 @@
+{
+  "name": "flowbot",
+  "version": "1.0.0",
+  "description": "FlowBot — daily planner Telegram bot + Mini App",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc && node scripts/copy-assets.js",
+    "start": "node dist/index.js",
+    "dev": "tsx watch src/index.ts",
+    "db:init": "node -e \"require('./dist/database/db.js').initDatabase()\""
+  },
+  "engines": {
+    "node": ">=22.5.0"
+  },
+  "dependencies": {
+    "@libsql/client": "^0.14.0",
+    "dotenv": "^16.4.7",
+    "express": "^4.21.2",
+    "grammy": "^1.35.0",
+    "node-cron": "^3.0.3",
+    "pureimage": "^0.4.13",
+    "serverless-http": "^3.2.0"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.0",
+    "@types/node": "^22.10.2",
+    "@types/node-cron": "^3.0.11",
+    "@vercel/node": "^3.2.29",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
+  }
+}
