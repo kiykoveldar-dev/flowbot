@@ -39,7 +39,7 @@ export async function createApp(): Promise<Express> {
   const webappRouter = createWebappRouter();
   app.use(webappRouter);
 
-  app.get("/health", (_req, res) => {
+  app.get("/health", (_req, res) => {Ы
     res.json({
       ok: true,
       service: "flowbot",
@@ -58,8 +58,9 @@ export async function createApp(): Promise<Express> {
     await setupBotCommands(bot);
     app.use("/webhook", webhookCallback(bot, "express"));
 
-    if (config.isVercel && config.webhookUrl) {
+    if (false) {
       await ensureTelegramWebhook(bot);
+    }
     }
   }
 
