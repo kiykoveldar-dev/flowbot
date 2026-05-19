@@ -3,10 +3,11 @@ import { createBot, setupBotCommands } from "../src/bot";
 let bot: ReturnType<typeof createBot> | null = null;
 
 async function getBot() {
-  if (!bot) {
-    bot = createBot();
-    await setupBotCommands(bot);
-  }
+    if (!bot) {
+        bot = createBot();
+        await setupBotCommands(bot);
+        await bot.init();
+      }
 
   return bot;
 }
