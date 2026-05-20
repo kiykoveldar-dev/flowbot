@@ -3,15 +3,15 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-  <title>FlowBot</title>
+  <title>FlowDay</title>
   <script src="https://telegram.org/js/telegram-web-app.js"></script>
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="style.css?v=4" />
 </head>
 <body>
   <div id="app">
     <header class="header">
       <div class="header-left">
-        <h1 class="logo">FlowBot</h1>
+        <h1 class="logo">FlowDay</h1>
         <span class="streak-badge" id="streakBadge">🔥 0</span>
       </div>
       <button type="button" class="icon-btn" id="helpBtn" aria-label="Справка">?</button>
@@ -34,7 +34,7 @@
     </section>
   </div>
 
-  <div class="modal" id="taskModal" hidden>
+  <div class="modal-overlay" id="taskModal" hidden>
     <form id="taskForm" class="modal-card">
       <h3>Новая цель</h3>
       <input type="text" id="taskInput" placeholder="Что сделаешь сегодня?" maxlength="120" autocomplete="off" />
@@ -47,6 +47,6 @@
 
   <div class="loading" id="loading">Загрузка…</div>
 
-  <script src="script.js"></script>
+  <script src="script.js?v=4"></script>
 </body>
 </html>

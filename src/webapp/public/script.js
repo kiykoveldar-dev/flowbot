@@ -124,11 +124,13 @@
   function openModal() {
     els.taskInput.value = "";
     els.taskModal.hidden = false;
+    els.taskModal.classList.add("open");
     document.body.classList.add("modal-open");
     setTimeout(() => els.taskInput.focus(), 100);
   }
 
   function closeModal() {
+    els.taskModal.classList.remove("open");
     els.taskModal.hidden = true;
     document.body.classList.remove("modal-open");
   }
